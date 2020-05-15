@@ -71,6 +71,7 @@ def create_generator(args, preprocess_image):
         validation_generator = CSVGenerator(
             args.annotations,
             args.classes,
+            args.img_dir,
             image_min_side=args.image_min_side,
             image_max_side=args.image_max_side,
             config=args.config,
@@ -100,6 +101,7 @@ def parse_args(args):
     csv_parser = subparsers.add_parser('csv')
     csv_parser.add_argument('annotations', help='Path to CSV file containing annotations for evaluation.')
     csv_parser.add_argument('classes', help='Path to a CSV file containing class label mapping.')
+    csv_parser.add_argument('img_dir', help='Path to CSV file containing annotations for training.')
 
     parser.add_argument('model',              help='Path to RetinaNet model.')
     parser.add_argument('--convert-model',    help='Convert the model to an inference model (ie. the input is a training model).', action='store_true')
